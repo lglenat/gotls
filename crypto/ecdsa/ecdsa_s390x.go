@@ -7,7 +7,7 @@ package ecdsa
 import (
 	"crypto/cipher"
 	"crypto/elliptic"
-	"internal/cpu"
+	"golang.org/x/sys/cpu"
 	"math/big"
 )
 

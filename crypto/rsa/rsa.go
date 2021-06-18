@@ -32,7 +32,7 @@ import (
 	"math"
 	"math/big"
 
-	"crypto/internal/randutil"
+	"golang.org/x/crypto/not_internal/randutil"
 )
 
 var bigZero = big.NewInt(0)

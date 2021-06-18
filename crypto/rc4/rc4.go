@@ -10,7 +10,7 @@
 package rc4
 
 import (
-	"crypto/internal/subtle"
+	"golang.org/x/crypto/not_internal/subtle"
 	"strconv"
 )
 

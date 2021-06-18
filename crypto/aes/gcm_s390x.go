@@ -6,11 +6,11 @@ package aes
 
 import (
 	"crypto/cipher"
-	subtleoverlap "crypto/internal/subtle"
 	"crypto/subtle"
 	"encoding/binary"
 	"errors"
-	"internal/cpu"
+	subtleoverlap "golang.org/x/crypto/not_internal/subtle"
+	"golang.org/x/sys/cpu"
 )
 
 // This file contains two implementations of AES-GCM. The first implementation

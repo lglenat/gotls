@@ -6,7 +6,7 @@ package aes
 
 import (
 	"crypto/cipher"
-	"crypto/internal/subtle"
+	"golang.org/x/crypto/not_internal/subtle"
 )
 
 // Assert that aesCipherAsm implements the cbcEncAble and cbcDecAble interfaces.

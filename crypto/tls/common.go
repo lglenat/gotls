@@ -17,6 +17,7 @@ import (
 	"crypto/x509"
 	"errors"
 	"fmt"
+	"golang.org/x/sys/cpu"
 	"io"
 	"net"
 	"runtime"
@@ -24,8 +25,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	cpu "github.com/lglenat/gotls/crypto/mycpu"
 )
 
 const (

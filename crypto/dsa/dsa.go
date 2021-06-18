@@ -18,7 +18,7 @@ import (
 	"io"
 	"math/big"
 
-	"crypto/internal/randutil"
+	"golang.org/x/crypto/not_internal/randutil"
 )
 
 // Parameters represents the domain parameters for a key. These parameters can

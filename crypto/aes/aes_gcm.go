@@ -8,9 +8,9 @@ package aes
 
 import (
 	"crypto/cipher"
-	subtleoverlap "crypto/internal/subtle"
 	"crypto/subtle"
 	"errors"
+	subtleoverlap "golang.org/x/crypto/not_internal/subtle"
 )
 
 // The following functions are defined in gcm_*.s.

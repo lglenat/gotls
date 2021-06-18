@@ -6,8 +6,8 @@ package des
 
 import (
 	"crypto/cipher"
-	"crypto/internal/subtle"
 	"encoding/binary"
+	"golang.org/x/crypto/not_internal/subtle"
 	"strconv"
 )
 

@@ -6,7 +6,7 @@
 
 package cipher
 
-import "crypto/internal/subtle"
+import "golang.org/x/crypto/not_internal/subtle"
 
 type cfb struct {
 	b       Block

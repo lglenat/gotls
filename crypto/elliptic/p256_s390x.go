@@ -8,7 +8,7 @@ package elliptic
 
 import (
 	"crypto/subtle"
-	"internal/cpu"
+	"golang.org/x/sys/cpu"
 	"math/big"
 	"unsafe"
 )

@@ -6,8 +6,8 @@ package aes
 
 import (
 	"crypto/cipher"
-	"crypto/internal/subtle"
-	"internal/cpu"
+	"golang.org/x/crypto/not_internal/subtle"
+	"golang.org/x/sys/cpu"
 )
 
 type code int

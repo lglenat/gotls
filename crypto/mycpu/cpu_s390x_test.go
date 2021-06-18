@@ -6,7 +6,7 @@ package cpu_test
 
 import (
 	"errors"
-	. "internal/cpu"
+	. "golang.org/x/sys/cpu"
 	"os"
 	"regexp"
 	"testing"

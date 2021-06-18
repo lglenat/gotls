@@ -7,7 +7,7 @@
 package cpu_test
 
 import (
-	. "internal/cpu"
+	. "golang.org/x/sys/cpu"
 	"os"
 	"runtime"
 	"testing"

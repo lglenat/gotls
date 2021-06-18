@@ -31,9 +31,9 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"crypto/elliptic"
-	"crypto/internal/randutil"
 	"crypto/sha512"
 	"errors"
+	"golang.org/x/crypto/not_internal/randutil"
 	"io"
 	"math/big"
 
