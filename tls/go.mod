@@ -1,4 +1,4 @@
-module github.com/lglenat/gotls/tls/tls
+module github.com/lglenat/gotls/tls
 
 go 1.16
 
