@@ -1,4 +1,4 @@
-module github.com/lglenat/gotls/tls
+module github.com/lglenat/gotls/crypto
 
 go 1.16
 

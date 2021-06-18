@@ -25,7 +25,7 @@ import (
 	"sync"
 	"time"
 
-	cpu "github.com/lglenat/gotls/tls/mycpu"
+	cpu "github.com/lglenat/gotls/crypto/mycpu"
 )
 
 const (
