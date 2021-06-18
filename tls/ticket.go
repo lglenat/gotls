@@ -12,6 +12,7 @@ import (
 	"crypto/sha256"
 	"crypto/subtle"
 	"errors"
+	"fmt"
 	"io"
 
 	"golang.org/x/crypto/cryptobyte"
@@ -24,8 +25,8 @@ type sessionState struct {
 	cipherSuite  uint16
 	createdAt    uint64
 	masterSecret []byte // opaque master_secret<1..2^16-1>;
-	// struct { opaque certificate<1..2^24-1> } Certificate;
-	certificates [][]byte // Certificate certificate_list<0..2^24-1>;
+	// // struct { opaque certificate<1..2^24-1> } Certificate;
+	// certificates [][]byte // Certificate certificate_list<0..2^24-1>;
 
 	// usedOldKey is true if the ticket from which this session came from
 	// was encrypted with an older key and thus should be refreshed.
@@ -40,13 +41,14 @@ func (m *sessionState) marshal() []byte {
 	b.AddUint16LengthPrefixed(func(b *cryptobyte.Builder) {
 		b.AddBytes(m.masterSecret)
 	})
-	b.AddUint24LengthPrefixed(func(b *cryptobyte.Builder) {
-		for _, cert := range m.certificates {
-			b.AddUint24LengthPrefixed(func(b *cryptobyte.Builder) {
-				b.AddBytes(cert)
-			})
-		}
-	})
+	fmt.Println("not marshalling client certificate in session ticket")
+	// b.AddUint24LengthPrefixed(func(b *cryptobyte.Builder) {
+	// 	for _, cert := range m.certificates {
+	// 		b.AddUint24LengthPrefixed(func(b *cryptobyte.Builder) {
+	// 			b.AddBytes(cert)
+	// 		})
+	// 	}
+	// })
 	return b.BytesOrPanic()
 }
 
@@ -64,13 +66,13 @@ func (m *sessionState) unmarshal(data []byte) bool {
 	if !s.ReadUint24LengthPrefixed(&certList) {
 		return false
 	}
-	for !certList.Empty() {
-		var cert []byte
-		if !readUint24LengthPrefixed(&certList, &cert) {
-			return false
-		}
-		m.certificates = append(m.certificates, cert)
-	}
+	// for !certList.Empty() {
+	// 	var cert []byte
+	// 	if !readUint24LengthPrefixed(&certList, &cert) {
+	// 		return false
+	// 	}
+	// 	m.certificates = append(m.certificates, cert)
+	// }
 	return s.Empty()
 }
 

@@ -7,7 +7,6 @@ package tls
 import (
 	"bytes"
 	"container/list"
-	"mycpu"
 	"crypto"
 	"crypto/ecdsa"
 	"crypto/ed25519"
@@ -25,6 +24,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	cpu "github.com/lglenat/gotls/tls/mycpu"
 )
 
 const (

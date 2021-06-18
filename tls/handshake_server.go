@@ -407,14 +407,14 @@ func (hs *serverHandshakeState) checkForResumption() bool {
 		return false
 	}
 
-	sessionHasClientCerts := len(hs.sessionState.certificates) != 0
-	needClientCerts := requiresClientCert(c.config.ClientAuth)
-	if needClientCerts && !sessionHasClientCerts {
-		return false
-	}
-	if sessionHasClientCerts && c.config.ClientAuth == NoClientCert {
-		return false
-	}
+	// sessionHasClientCerts := len(hs.sessionState.certificates) != 0
+	// needClientCerts := requiresClientCert(c.config.ClientAuth)
+	// if needClientCerts && !sessionHasClientCerts {
+	// 	return false
+	// }
+	// if sessionHasClientCerts && c.config.ClientAuth == NoClientCert {
+	// 	return false
+	// }
 
 	return true
 }
@@ -436,11 +436,12 @@ func (hs *serverHandshakeState) doResumeHandshake() error {
 		return err
 	}
 
-	if err := c.processCertsFromClient(Certificate{
-		Certificate: hs.sessionState.certificates,
-	}); err != nil {
-		return err
-	}
+	fmt.Println("not processing certs from client during resumed handshake")
+	// if err := c.processCertsFromClient(Certificate{
+	// 	Certificate: hs.sessionState.certificates,
+	// }); err != nil {
+	// 	return err
+	// }
 
 	if c.config.VerifyConnection != nil {
 		if err := c.config.VerifyConnection(c.connectionStateLocked()); err != nil {
@@ -721,16 +722,16 @@ func (hs *serverHandshakeState) sendSessionTicket() error {
 		createdAt = hs.sessionState.createdAt
 	}
 
-	var certsFromClient [][]byte
-	for _, cert := range c.peerCertificates {
-		certsFromClient = append(certsFromClient, cert.Raw)
-	}
+	// var certsFromClient [][]byte
+	// for _, cert := range c.peerCertificates {
+	// 	certsFromClient = append(certsFromClient, cert.Raw)
+	// }
 	state := sessionState{
 		vers:         c.vers,
 		cipherSuite:  hs.suite.id,
 		createdAt:    createdAt,
 		masterSecret: hs.masterSecret,
-		certificates: certsFromClient,
+		// certificates: certsFromClient,
 	}
 	var err error
 	m.ticket, err = c.encryptTicket(state.marshal())
