@@ -1256,6 +1256,7 @@ func (cri *CertificateRequestInfo) SupportsCertificate(c *Certificate) error {
 // with a given name. Leave that field nil to let the library select the first
 // compatible chain from Certificates.
 func (c *Config) BuildNameToCertificate() {
+	fmt.Println("in lucas tls")
 	c.NameToCertificate = make(map[string]*Certificate)
 	for i := range c.Certificates {
 		cert := &c.Certificates[i]
